@@ -11,6 +11,7 @@ env:
   - CI_REPORT=shippable/testresults/junit.xml
   - secure: PXr7ejPzyL6XiPJ8zk5XJChSN4B2XejahtCgRxHf9ibkwA9DiQpsU7SOAYrgdT7YDh9GKylB7j75aT1W93d/kL7jrTsurUfcqdCwHnq3VOvUW/sY+ZxwMw8UMZvY/JTkEWypHZdeiKWAKp+12iAFbCbfLx/AyiGTs3O4IYDz5LnXico7N4eJpquZDK1GLhPnbiUjbKpDs9xmoBbgDGHmUxQJJgC5XIWCt9sLQbeUJTy3uY7td1yL+raPuLvnHSjSsSGSRG1JCW1IcINtinl3k79WNuHbo+EqOGHM7sLfGcBTksgiU8uJtX/IIq0YisZv+Jgow61V7PYa+vB9MJ+UcA== 
   
+  
 install:
   - go get -v gopkg.in/yaml.v1
   - go get github.com/t-yuki/gocover-cobertura
@@ -19,6 +20,7 @@ install:
   - go get code.google.com/p/go.tools/cmd/cover
   - mkdir -p $GOPATH/src/github.com/Shippable
   - ln -sfn $PWD $GOPATH/src/github.com/Shippable/sample_go
+  - shippable_retry 'if [ $i -eq 3 ]; then echo "done"; else foobar$i; fi'
 archive: true
 
 # Make folders for the reports
